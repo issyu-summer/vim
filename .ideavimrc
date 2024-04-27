@@ -1,0 +1,103 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+" goland无效
+" set scrolloff=5
+
+" 基础配置
+
+" 使用空格作为leader键
+let mapleader =" "
+" Do incremental searching.
+set incsearch
+" yy复制到系统剪贴板及vim寄存器,<leader>从系统剪贴板复制进vim
+set clipboard+=unnamed
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8,chinese,utf-16,big5,latin1
+set termencoding=utf-8
+
+" vim plugin
+" vim plugin
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+Plug 'tpope/vim-commentary'
+
+" insert mode
+" leader+n进入normal模式
+inoremap jj <ESC>
+
+" visual mode
+" mm替换掉行尾
+vnoremap mm $
+" mn替换掉行首
+vnoremap mn ^
+" <leader>j进入normal模式
+vnoremap <leader>j <ESC>
+
+" normal mode
+" mm替换掉行尾
+nnoremap mm $
+" mn替换掉行首
+nnoremap mn ^
+" leader+c进入命令模式
+nnoremap <leader><leader> :
+" leader+wq替换推出并保存命令
+nnoremap <leader>wq :wq<CR>
+" leader+q替换退出命令
+nnoremap <leader>q :q<CR>
+" leader+p替换系统剪贴板粘贴，废弃，使用set clipboard
+" nnoremap <leader>p "*p
+"行首编辑
+nnoremap <leader>i I
+"行尾编辑
+nnoremap <leader>a A
+" 光标行开始，全选之上的文本
+nnoremap <leader>b Vgg
+" 光标行开始，全选之下的文本
+nnoremap <leader>n VG
+" 全选文本
+nnoremap <leader>a ggVG
+" 跳转到页尾巴
+nnoremap <leader>g G
+" 全局替换替换文本
+nnoremap <leader>rr :%s/
+" register
+nnoremap <leader>reg "
+nnoremap <leader>sr :reg<CR>
+
+""" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+" 清空寄存器，以下是笨方法,idea vim不支持很多feature
+" 如果是终端vim,使用如下命令 command! WipeReg for i in range(a,z) | silent! call setreg(nr2char(i), []) | endfor
+func WipeReg()
+  let @" = ""
+  let @0 = ""
+  let @1 = ""
+  let @2 = ""
+  let @3 = ""
+  let @4 = ""
+  let @5 = ""
+  let @6 = ""
+  let @7 = ""
+  let @8 = ""
+  let @9 = ""
+  let @- = ""
+  let @* = ""
+  let @+ = ""
+  let @/ = ""
+endfunc
+
+nnoremap <expr> <leader>cr  WipeReg()
