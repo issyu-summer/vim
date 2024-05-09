@@ -1,5 +1,7 @@
 # vim
 
-idea-vim configuration
+idea-vim action list：https://github.com/issyu-summerim.git
+vim expr: ``:actionlist``
 
-need your advise urgently
+idea-vim configuration  
+need your advice urgently
