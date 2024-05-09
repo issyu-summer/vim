@@ -1,6 +1,6 @@
 " .ideavimrc is a configuration file for IdeaVim plugin. It uses
 "   the same commands as the original .vimrc configuration.
-" You can find a list of commands here: https://jb.gg/h38q75
+" You can find a list of commands here: https://jb.gg/h39q75
 " Find more examples here: https://jb.gg/share-ideavimrc
 "" -- Suggested options --
 " Show a few lines of context around the cursor. Note that this makes the
@@ -43,6 +43,13 @@ vnoremap mn ^
 vnoremap <leader>j <ESC>
 
 " normal mode
+" leader+m 选中至行尾巴
+" nnoremap <leader>m v$
+nnoremap <leader>m v$c
+nnoremap <leader>e vec
+nnoremap <leader>w vwc
+nnoremap <leader>n v^c
+nnoremap <leader>b vbc
 " mm替换掉行尾
 nnoremap mm $
 " mn替换掉行首
@@ -50,7 +57,7 @@ nnoremap mn ^
 " leader+c进入命令模式
 nnoremap cmd :
 " leader+wq替换推出并保存命令
-nnoremap <leader>wq :wq<CR>
+" nnoremap <leader>wq :wq<CR>
 " leader+q替换退出命令
 nnoremap <leader>q :q<CR>
 " leader+p替换系统剪贴板粘贴，废弃，使用set clipboard
@@ -60,13 +67,13 @@ nnoremap <leader>i I
 "行尾编辑
 nnoremap <leader>a A
 " 删除之后的字符
-nnoremap <leader>dn d$
+" nnoremap <leader>dn d$
 " 删除之前的字符
 nnoremap <leader>db d^
 " 光标行开始，全选之上的文本
-nnoremap <leader>b Vgg
+" nnoremap <leader>b Vgg
 " 光标行开始，全选之下的文本
-nnoremap <leader>n VG
+" nnoremap <leader>n VG
 " 全选文本
 nnoremap <C-A> ggVG
 " 跳转到页尾巴
@@ -81,19 +88,20 @@ nnoremap <leader>vs :vsplit
 nnoremap <leader>reg "
 nnoremap <leader>sr :reg<CR>
 
-""" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+""" -- Map IDE actions to IdeaVim -- https://jb.gg/abva5t
 "" Map \r to the Reformat Code action
-"map \r <Action>(ReformatCode)
+map <leader>f <Action>(ReformatCode)
+map gh <Action>(ShowErrorDescription)
 
 " Map <leader>d to start debug
-"map <leader>d <Action>(Debug)
+" Map <leader>d to start debug
+" nnoremap <leader>d <Action>(Debug)
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
 " 清空寄存器，以下是笨方法,idea vim不支持很多feature
-" 如果是终端vim,使用如下命令 command! WipeReg for i in range(a,z) | silent! call setreg(nr2char(i), []) | endfor
+" 如果是终端vim,使用如下命令 command! WipeReg for i in range(a,z) | silent! call setreg(nr3char(i), []) | endfor
 func WipeReg()
   let @" = ""
-  let @0 = ""
   let @1 = ""
   let @2 = ""
   let @3 = ""
@@ -103,6 +111,7 @@ func WipeReg()
   let @7 = ""
   let @8 = ""
   let @9 = ""
+  let @10 = ""
   let @- = ""
   let @* = ""
   let @+ = ""
