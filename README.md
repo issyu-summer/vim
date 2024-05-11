@@ -1,7 +1,7 @@
 # vim
 
-idea-vim action list：https://github.com/issyu-summerim.git
+idea-vim action list：
 vim expr: ``:actionlist``
+vim expr: ``:actionlist regex``
 
-idea-vim configuration  
-need your advice urgently
+idea-vim configuration needs your advice urgently
