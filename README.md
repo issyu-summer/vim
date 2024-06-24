@@ -1,8 +1,7 @@
 # vim
 
-idea-vim configuration
+idea-vim action list：
+vim expr: ``:actionlist``
+vim expr: ``:actionlist regex``
 
-need your advise urgently
-
-TODO:
-1. vim键盘映射debug
+idea-vim configuration needs your advice urgently
