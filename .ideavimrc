@@ -111,8 +111,8 @@ map gb <Action>(GotoImplementation)
 map gu <Action>(ShowUsages)
 map gs <Action>(GotoSuperMethod)
 map ge <Action>(GotoNextError)
-map <leader>b <Action>(Back)
-map <leader>f <Action>(Forward)
+map <leader><leader>b <Action>(Back)
+map <leader><leader>f <Action>(Forward)
 map <leader><leader>e <Action>(GotoNextError)
 
 " Map <leader>d to start debug
