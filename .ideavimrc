@@ -94,6 +94,10 @@ nnoremap <leader>sr :reg<CR>
 nnoremap <leader>l gul
 nnoremap <leader>u gUl
 nnoremap ' "
+" Jump to last
+nnoremap bp :bp<CR>
+" Jump to next
+nnoremap bn :bn<CR>
 vnoremap ' "
 
 """ -- Map IDE actions to IdeaVim -- https://jb.gg/abva5t
