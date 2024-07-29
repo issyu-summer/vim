@@ -95,9 +95,9 @@ nnoremap <leader>l gul
 nnoremap <leader>u gUl
 nnoremap ' "
 " Jump to last
-nnoremap bp :bp<CR>
+nnoremap <leader>jp :bp<CR>
 " Jump to next
-nnoremap bn :bn<CR>
+nnoremap <leader>jn :bn<CR>
 vnoremap ' "
 
 """ -- Map IDE actions to IdeaVim -- https://jb.gg/abva5t
@@ -114,6 +114,7 @@ map ge <Action>(GotoNextError)
 map <leader><leader>b <Action>(Back)
 map <leader><leader>f <Action>(Forward)
 map <leader><leader>e <Action>(GotoNextError)
+map <leader><leader>r <Action>(Run)
 
 " Map <leader>d to start debug
 " Map <leader>d to start debug
