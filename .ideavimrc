@@ -1,3 +1,4 @@
+
 " .ideavimrc is a configuration file for IdeaVim plugin. It uses
 "   the same commands as the original .vimrc configuration.
 " You can find a list of commands here: https://jb.gg/h39q75
@@ -8,137 +9,151 @@
 " goland无效
 " set scrolloff=6
 
-" 基础配置
-
-" 使用空格作为leader键
+" -------------- (基础配置) --------------
+" space作为leader键
 let mapleader =" "
-" Do incremental searching.
+" 增量搜索，更快的搜素预览
 set incsearch
-" yy复制到系统剪贴板及vim寄存器,<leader>从系统剪贴板复制进vim
+" vim与系统剪贴板互通,刷leetcode方便
 set clipboard+=unnamed
+" utf-8编码
 set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8,chinese,utf-16,big5,latin1
+" 终端utf-8编码
 set termencoding=utf-8
+" -------------- (基础配置) --------------
 
-" vim plugin
+
+
+
+
+" -------------- (插件)vim plugin,IDEA只能支持有限的插件 --------------
 " --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
-" Highlight copied text
+" Highlight copied texb
 Plug 'machakann/vim-highlightedyank'
 " Commentary plugin
 Plug 'tpope/vim-commentary'
 " Easy Motion <leader><leader>+s文内跳转
 Plug 'easymotion/vim-easymotion'
+" -------------- (插件)vim plugin,IDEA只能支持有限的插件 --------------
 
-" insert mode
-" leader+n进入normal模式
+
+
+
+
+" --------------模式(mode)--------------
+" jj:insert->normal模式
 inoremap jj <ESC>
+" jj:visual->normal模式
+vnoremap qq <ESC>
+" --------------模式(mode)--------------
 
-" visual mode
-" mm替换掉行尾
-vnoremap mm $
-" mn替换掉行首
-vnoremap mn ^
-" <leader>j进入normal模式
-vnoremap <leader>j <ESC>
 
-" normal mode
-" leader+m 选中至行尾巴
-" nnoremap <leader>m v$
-nnoremap <leader>m v$
-nnoremap <leader>e ve
-nnoremap <leader>w vw
-nnoremap <leader>n v^
-nnoremap <leader>b vb
-" visual mode
-vnoremap <leader>m v$
-vnoremap <leader>e ve
-vnoremap <leader>w vw
-vnoremap <leader>n v^
-vnoremap <leader>b vb
-" mm替换掉行尾
-nnoremap mm $
-" mn替换掉行首
-nnoremap mn ^
-" leader+c进入命令模式
-nnoremap cmd :
-" leader+wq替换推出并保存命令
-" nnoremap <leader>wq :wq<CR>
-" leader+q替换退出命令
-nnoremap <leader>q :q<CR>
-" leader+p替换系统剪贴板粘贴，废弃，使用set clipboard
-" nnoremap <leader>p "*p
-"行首编辑
-nnoremap <leader>i I
-"行尾编辑
-nnoremap <leader>a A
-" 删除之后的字符
-" nnoremap <leader>dn d$
-" 删除之前的字符
-nnoremap <leader>db d^
-" 光标行开始，全选之上的文本
-" nnoremap <leader>b Vgg
-" 光标行开始，全选之下的文本
-" nnoremap <leader>n VG
-" 跳转到页尾巴
-nnoremap <leader>g G
-" 全局替换替换文本
-nnoremap <leader>rr :%s/
-" h split文件
-nnoremap <leader>hs :split
-" v split文件
-nnoremap <leader>vs :vsplit
-" register
-nnoremap <leader>reg "
-nnoremap <leader>sr :reg<CR>
-nnoremap <leader>l gul
-nnoremap <leader>u gUl
+
+
+
+" -------------- 移动(motion)map==>使用m作为prefix --------------
+" motion tail
+nnoremap mt $
+" motion head
+nnoremap mh 0
+" motion down/up/left/right 5 lines
+nnoremap mjj 5j
+nnoremap mkk 5k
+" 用处有限且和motion tail/head冲突
+"nnoremap mhh 5h
+"nnoremap mll 5l
+" -------------- 移动(motion)map==>使用m作为prefix --------------
+
+
+
+
+
+" -------------- 文件(file)map==>使用f作为prefix --------------
+nnoremap fs :w<CR>
+nnoremap fq :wq<CR>
+nnoremap fe :e
+nnoremap ff :find<CR>
+" ideaVim不支持
+" nnoremap fd :!rm<CR>
+" 跳转到上一个文件,IDEA不要打开太多文件，不然这个命令近似无效
+nnoremap fl :bp<CR>
+" 跳转到下一个文件
+nnoremap fn :bn<CR>
+" -------------- 文件(file)map==>使用f作为prefix --------------
+
+
+
+
+
+" -------------- 文本(text)map==>使用t作为prefix --------------
+" 选中至首尾
+nnoremap tt v$
+nnoremap th v^
+" 选中至单词
+nnoremap tb vb
+nnoremap tw vw
+nnoremap te ve
+" 行首编辑
+nnoremap ti I
+" 行尾编辑
+nnoremap ta A
+" 大小写变更 upper
+nnoremap tu gUl
+nnoremap tl gul
+" -------------- 文本(text)map==>使用t作为prefix --------------
+
+
+
+
+
+" -------------- 窗口(window)map==>使用w作为prefix==>因为w在vim默认键盘映射中，因此需要加入先导键<leader> --------------
+nnoremap <leader>ws :split
+nnoremap <leader>wv :vsplit
+" 分屏依次切换到下一个窗口
+nnoremap <leader>wn <C-w>w
+" 分屏切换到上下左右
+nnoremap <leader>wk <C-w>k
+nnoremap <leader>wj <C-w>j
+nnoremap <leader>wh <C-w>h
+nnoremap <leader>wl <C-w>l
+" -------------- 窗口(window)map==>使用w作为prefix --------------
+
+
+
+
+
+" -------------- 搜素替换(search/replace)mpa==>使用s作为prefix --------------
+nnoremap ss /
+nnoremap sr :%s/
+" -------------- 搜素替换(search/replace)mpa==>使用s作为prefix --------------
+
+
+
+
+
+" -------------- 寄存器(register)map==>使用r作为prefix --------------
 nnoremap ' "
-" Jump to last
-nnoremap <leader>jp :bp<CR>
-" Jump to next
-nnoremap <leader>jn :bn<CR>
-vnoremap ' "
+" 显示寄存器内容，根据copy顺序，分别是0~9寄存器
+nnoremap reg :reg<CR>
+" -------------- 寄存器(register)map==>使用r作为prefix --------------
 
-""" -- Map IDE actions to IdeaVim -- https://jb.gg/abva5t
+
+
+
+
+" -------------- IDEA操作(action)map==>使用a作为prefix==>使用先导<leader>,若和之前使用先导键的映射有冲突，则使用<leader><leader> --------------
+" -- Map IDE actions to IdeaVim -- https://jb.gg/abva5t
+" -- Action List使用命令查看:actionlist
 "" Map \r to the Reformat Code action
-map <leader>f <Action>(ReformatCode)
-map gh <Action>(ShowErrorDescription)
-map gl <Action>(ShowIntentionActions)
-map <leader>c <Action>(NewFile)
-map <leader>p <Action>(CopyFileReference)
-map gb <Action>(GotoImplementation)
-map gu <Action>(ShowUsages)
-map gs <Action>(GotoSuperMethod)
-map ge <Action>(GotoNextError)
-map <leader><leader>b <Action>(Back)
-map <leader><leader>f <Action>(Forward)
-map <leader><leader>e <Action>(GotoNextError)
-map <leader><leader>r <Action>(Run)
-
-" Map <leader>d to start debug
-" Map <leader>d to start debug
-" nnoremap <leader>d <Action>(Debug)
-"" Map \b to toggle the breakpoint on the current line
-"map \b <Action>(ToggleLineBreakpoint)
-" 清空寄存器，以下是笨方法,idea vim不支持很多feature
-" 如果是终端vim,使用如下命令 command! WipeReg for i in range(a,z) | silent! call setreg(nr3char(i), []) | endfor
-func WipeReg()
-  let @" = ""
-  let @1 = ""
-  let @2 = ""
-  let @3 = ""
-  let @4 = ""
-  let @5 = ""
-  let @6 = ""
-  let @7 = ""
-  let @8 = ""
-  let @9 = ""
-  let @10 = ""
-  let @- = ""
-  let @* = ""
-  let @+ = ""
-  let @/ = ""
-endfunc
-
-nnoremap <expr> cr  WipeReg()
+map <leader>f  <Action>(ReformatCode)
+map <leader>ed <Action>(ShowErrorDescription)
+map <leader>ea <Action>(ShowIntentionActions)
+map <leader>gi <Action>(GotoImplementation)
+map <leader>gu <Action>(ShowUsages)
+map <leader>gs <Action>(GotoSuperMethod)
+map <leader>ge <Action>(GotoNextError)
+map <leader>b <Action>(Back)
+map <leader>f <Action>(Forward)
+map <leader>r <Action>(Run)
+map <leader>d <Action>(Debug)
+map <leader><leader>f <Action>(FindInPath)
