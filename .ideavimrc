@@ -144,10 +144,11 @@ nnoremap reg :reg<CR>
 " -- Map IDE actions to IdeaVim -- https://jb.gg/abva5t
 " -- Action List使用命令查看:actionlist
 "" Map \r to the Reformat Code action
-map gf  <Action>(ReformatCode)
+map gf <Action>(ReformatCode)
 map gd <Action>(ShowErrorDescription)
 map ga <Action>(ShowIntentionActions)
 map gi <Action>(GotoImplementation)
+map go <Action>(GotoDeclaration)
 map gu <Action>(ShowUsages)
 map gs <Action>(GotoSuperMethod)
 map ge <Action>(GotoNextError)
@@ -157,4 +158,3 @@ map <leader>f <Action>(Forward)
 map <leader>r <Action>(Run)
 map <leader>d <Action>(Debug)
 map <leader><leader>f <Action>(FindInPath)
-" -------------- IDEA操作(action)map==>使用a作为prefix==>使用先导g键盘 --------------
